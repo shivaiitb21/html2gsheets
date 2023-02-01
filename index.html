@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact us</title>
+    <style>
+        body
+        {
+            font-family: Mulish;
+        }
+        .outer
+        {
+            height: 850px;
+            min-width: 800px;
+        }
+        
+        
+        #btn
+        {
+            height: 40px;
+            width: 110px;
+            background-color: #F8BC28;
+            margin-left: 35px;
+        }
+        ::placeholder
+        {
+            font-family: Arial;
+        }
+        .feld
+        {
+            font-size: large;
+        }
+        h1
+        {
+            font-size: 3rem;
+        }
+        span
+        {
+            color: red;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <h1><center>
+            Get in Touch
+        </center></h1>
+       
+        <h1><center>We,d <span>LOVE</span> to help you!</center></h1>
+        <div class="feld">
+            <center>
+            <form action="" style="margin-right: 10px; padding:10px;" name="submit-to-google-sheet">
+                <table>
+                    <tr>
+                        <td>Name:</td> 
+                        <td><input type="name" name="name" id="name" placeholder="Enter your name" style="margin: 10px; padding: 10px; width: 370px;" required >
+                        </tr>
+                    <tr>
+                        <td >E-mail:</td>
+                        <td><input type="email" name="email" id="email" placeholder="Enter your e-mail" style="margin: 10px; padding: 10px; width: 373px;" required></td>
+                    </tr>
+                    <tr>
+                        <td >Contact No:</td>
+                        <td><input type="tel" name="phone" id="phone" placeholder="Enter your mobile no." style="margin: 10px; padding: 10px; width: 373px;" pattern="[0-9]{10}" required></td>
+                    </tr>
+                    <tr>
+                        <td >Associated Organization: <br>(if applicable)</td>
+                        <td><input type="name" name="org name" id="name" placeholder="Organization name" style="margin: 10px; padding: 10px; width: 373px;" ></td>
+                    </tr>
+                    <tr>
+                        <td>Designation/Occupation:</td> 
+                        <td><input type="name" name="occupation" id="name" placeholder="Enter your occupation" style="margin: 10px; padding: 10px; width: 370px;" required>
+                        </tr>
+                    
+                    <tr>
+                            <td>Village/locality/address:</td> 
+                            <td><textarea type="name" name="address" id="name" placeholder="Enter your address" style="margin: 10px; padding: 10px; width: 370px;" required></textarea>
+                            </tr>
+                    <tr>
+                            <td>Problem: <br>(Short description)</td> 
+                            <td><input type="name" name="description" id="name" placeholder="Problem (in short)" style="margin: 10px; padding: 10px; width: 370px;" required></td>
+                            </tr>
+                    <tr>
+                            <td>Sector of the problem: </td> 
+                            <td><select name="sector" id="sector" placeholder="Select option" style="margin: 10px; padding: 10px; width: 393px;" required>
+                                <option value="Select option">Select option</option>
+                                <option value="Health and nutrition">Health and nutrition</option>
+                                <option value="Livelihood">Livelihood</option>
+                                <option value="Water">Water</option>
+                                <option value="Energy">Energy</option>
+                                <option value="Agriculture">Agriculture</option>
+                                <option value="Education">Education</option>
+                                <option value="Social">Social</option>
+                                <option value="solid waste">solid waste</option>
+                                <option value="waste water">waste water</option>
+                             </select>   
+                    </tr>   
+                    <!-- <tr>
+                        <td>Upload relevant videos / pictures:</td> 
+                        <td><input type="file" accept="image/*" name="myfile" id="file"  style="margin: 10px; padding: 10px; width: 370px;" required>
+                          
+                        </td>
+                        <img src="" alt="">
+                        <script>
+                            let url = "Api_Endpoint_Url";
+                            let file = document.querySelector("input");
+                            let img = document.querySelector("img");
+                            file.addEventListener('change',()=>{
+                                let fr = new FileReader();
+                                fr.addEventListener('loadend',()=>{
+                                    let res = fr.result;
+                                    img.src=res;
+                                    let spt = res.split("base64,")[1];
+                                    // console.log(spt);
+                                    let obj = {
+                                        base64:spt,
+                                        type:file.files[0].type,
+                                        name:file.files[0].name
+                                    }
+                                    fetch(url,{
+                                        method:"POST",
+                                        body:JSON.stringify(obj)
+                                    })
+                                    .then(r=>r.text())
+                                    .then(data=>console.log(data))
+                         
+                                })
+                                fr.readAsDataURL(file.files[0])
+                            })
+                        </script>
+                    </tr> 
+                     -->
+                   <tr>
+                    <form action="https://script.google.com/macros/s/#####/exec" id="form" method="post">
+                        Upload a file
+                        <div id="data"></div>
+                        <input name="file" id="uploadfile" type="file">
+                        <input id="submit" type="submit">
+                    </form>
+                    <script>
+                    $('#uploadfile').on("change", function() {
+                        var file = this.files[0];
+                        var fr = new FileReader();
+                        fr.fileName = file.name;
+                        fr.onload = function(e) {
+                            e.target.result
+                            html = '<input type="hidden" name="data" value="' + e.target.result.replace(/^.*,/, '') + '" >';
+                            html += '<input type="hidden" name="mimetype" value="' + e.target.result.match(/^.*(?=;)/)[0] + '" >';
+                            html += '<input type="hidden" name="filename" value="' + e.target.fileName + '" >';
+                            $("#data").empty().append(html);
+                        }
+                        fr.readAsDataURL(file);
+                    });
+                    </script>
+                
+                   </tr>
+<img src="" alt="">
+
+                            
+                    
+                </table>
+                    <input type="submit" id="btn" >
+                </form>
+
+                <script>
+                  const scriptURL = "https://script.google.com/macros/s/AKfycbzxWkzLyc9SOyyBh2--VOW0NvdlVbC4Wdi6qIrlHSJsOwxj_ZQu9osfc-aEwc0dmL30/exec" //paste your url of web app created in App Script
+                  const form = document.forms['submit-to-google-sheet']
+                
+                  form.addEventListener('submit', e => {
+                    e.preventDefault()
+                    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                      .then(response => console.log('Success!', response))
+                      .catch(error => console.error('Error!', error.message))
+                  })
+
+                </script>
+                <script>
+                    let url = "https://script.google.com/macros/s/AKfycbwHaLVSWwHlIhAtsYKKbcZW4L3YDC0GoMamUTCmodvPgDGnb44Rpd7TH3y_ca0u0numuA/exec";
+                    let file = document.querySelector("input");
+                    let img = document.querySelector("img");
+                    file.addEventListener('change',()=>{
+                        let fr = new FileReader();
+                        fr.addEventListener('loadend',()=>{
+                            let res = fr.result;
+                            img.src=res;
+                            let spt = res.split("base64,")[1];
+                            // console.log(spt);
+                            let obj = {
+                                base64:spt,
+                                type:file.files[0].type,
+                                name:file.files[0].name
+                            }
+                            fetch(url,{
+                                method:"POST",
+                                body:JSON.stringify(obj)
+                            })
+                            .then(r=>r.text())
+                            .then(data=>console.log(data))
+                 
+                        })
+                        // fr.readAsDataURL(file.files[0])
+                    })
+                </script>
+
+                
+
+        </center>
+    </div>
+        </div>
+
+        
+            
+    
+    
+</body>
+</html>
